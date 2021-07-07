@@ -3,6 +3,7 @@ const modeBtns = document.querySelectorAll('.mode-btn');
 const blackMode = document.getElementById('black-mode');
 const greyscaleMode = document.getElementById('greyscale-mode');
 const rainbowMode = document.getElementById('rainbow-mode');
+const clearBtn = document.getElementById('clear-btn');
 const sizeBtn = document.getElementById('size-btn');
 const grid = document.getElementById('grid');
 
@@ -13,12 +14,18 @@ const maxSquares = 100;
 setup();
 
 /**
- * Sets up the default etch-a-sketch grid.
+ * Sets up the default etch-a-sketch grid and adds event listeners to buttons.
  */
 function setup() {
     grid.style.width = `${gridDim}px`;
     grid.style.height = `${gridDim}px`;
     createGrid(16);
+
+    modeBtns.forEach((btn) => {
+        btn.addEventListener('click', changeMode);
+    });
+    sizeBtn.addEventListener('click', changeSize);
+    clearBtn.addEventListener('click', clear);
 }
 
 /**
@@ -42,5 +49,26 @@ function createGrid(squares) {
         const gridSquare = document.createElement('div');
         gridSquare.classList.add('square');
         grid.appendChild(gridSquare);
+        gridSquare.addEventListener('mouseover', fillSquare);
     }
+}
+
+// TODO
+function fillSquare() {
+
+}
+
+// TODO
+function changeMode() {
+
+}
+
+// TODO
+function changeSize() {
+
+}
+
+// TODO
+function clear() {
+
 }

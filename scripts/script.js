@@ -12,12 +12,12 @@ const gridDim = 500; // px
 const maxSquares = 100;
 
 /* Color Modes */
-let modeTypes = [
+const modeTypes = [
     blackMode.textContent,
     greyscaleMode.textContent,
     rainbowMode.textContent
 ];
-let mode = modeTypes[0];
+let mode;
 
 setup();
 
@@ -25,6 +25,9 @@ setup();
  * Sets up the default etch-a-sketch grid and adds event listeners to buttons.
  */
 function setup() {
+    mode = modeTypes[0];
+    blackMode.classList.add('selected-mode');
+
     grid.style.width = `${gridDim}px`;
     grid.style.height = `${gridDim}px`;
     createGrid(16);
@@ -42,7 +45,7 @@ function setup() {
  * @param {number} squares - The number of squares per side.
  */
 function createGrid(squares) {
-    let squareDim = gridDim / squares; // px
+    const squareDim = gridDim / squares; // px
 
     // Clear current grid
     let oldChildren = document.getElementById('grid').childNodes;
@@ -128,12 +131,21 @@ function getDimmedColor(color) {
 }
 
 /**
- * Changes the fill mode according to the button pressed.
+ * Changes the fill mode according to the button pressed. Updates the selected
+ * button's class.
  *
  * @param {Event} e - The event that occured.
  */
 function changeMode(e) {
     mode = e.target.textContent;
+
+    modeBtns.forEach((btn) => {
+        if (btn === e.target) {
+            btn.classList.add('selected-mode');
+        } else {
+            btn.classList.remove('selected-mode');
+        }
+    });
 }
 
 /**

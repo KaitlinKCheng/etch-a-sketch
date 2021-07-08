@@ -40,7 +40,7 @@ function setup() {
 }
 
 /**
- * Creates a new squares x squares grid.
+ * Creates a new `squares` x `squares` grid.
  *
  * @param {number} squares - The number of squares per side.
  */
@@ -80,7 +80,7 @@ function fillSquare(e) {
             break;
         // Greyscale
         case modeTypes[1]:
-            // Extract current RGB colors
+            // Extract current RGB color values
             let currentColor = getComputedStyle(e.target).backgroundColor;
             currentColor = currentColor.match(/([0-9]+)+/g);
 
@@ -104,14 +104,14 @@ function fillSquare(e) {
 }
 
 /**
- * A helper function for fillSquare(). Takes the given color and adds 10% more
- * black to it, giving it a "dimmed" effect.
+ * A helper function for `fillSquare()`. Takes the given color and removes 10%
+ * color, giving it a "dimmed" effect.
  *
- * @param {number[]} color - The RGB values in the form [red, green, blue].
+ * @param {number[]} color - The RGB values in the form `[red, green, blue]`.
  * @return {number[]} The given values after applying the dimmed effect.
  */
 function getDimmedColor(color) {
-    // Amount of black to add each time
+    // Color to take away
     const dimAmount = Math.floor(255 / 10 + 1);
 
     let dimColor = [
@@ -120,7 +120,7 @@ function getDimmedColor(color) {
         color[2] - dimAmount
     ];
 
-    // Keep colors positive
+    // Keep color values positive
     dimColor.forEach((val) => {
         if (val < 0) {
             val = 0;
@@ -159,7 +159,7 @@ function clear() {
 }
 
 /**
- * Changes the size of the grid to newSize x newSize based on user input.
+ * Changes the size of the grid to `newSize` x `newSize` based on user input.
  */
 function changeSize() {
     const minSize = 2;

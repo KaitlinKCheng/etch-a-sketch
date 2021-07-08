@@ -32,8 +32,8 @@ function setup() {
     modeBtns.forEach((btn) => {
         btn.addEventListener('click', changeMode);
     });
-    sizeBtn.addEventListener('click', changeSize);
     clearBtn.addEventListener('click', clear);
+    sizeBtn.addEventListener('click', changeSize);
 }
 
 /**
@@ -136,12 +136,17 @@ function changeMode(e) {
     mode = e.target.textContent;
 }
 
-// TODO
-function changeSize() {
-
+/**
+ * Clears the current grid.
+ */
+function clear() {
+    let gridChildren = document.getElementById('grid').childNodes;
+    gridChildren.forEach((child) => {
+        child.style.backgroundColor = '#FFF';
+    });
 }
 
 // TODO
-function clear() {
+function changeSize() {
 
 }

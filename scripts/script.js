@@ -158,7 +158,18 @@ function clear() {
     });
 }
 
-// TODO
+/**
+ * Changes the size of the grid to newSize x newSize based on user input.
+ */
 function changeSize() {
+    const minSize = 2;
+    const maxSize = 64;
+    let newSize = 0;
 
+    while (newSize < minSize || newSize > maxSize) {
+        newSize = prompt(`Enter a new size (${minSize}–${maxSize}):`, 0);
+    }
+
+    clear();
+    createGrid(newSize);
 }

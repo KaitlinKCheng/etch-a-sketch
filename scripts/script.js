@@ -11,6 +11,14 @@ const grid = document.getElementById('grid');
 const gridDim = 500; // px
 const maxSquares = 100;
 
+/* Color Modes */
+let modeTypes = [
+    blackMode.textContent,
+    greyscaleMode.textContent,
+    rainbowMode.textContent
+];
+let mode = modeTypes[0];
+
 setup();
 
 /**
@@ -53,14 +61,79 @@ function createGrid(squares) {
     }
 }
 
-// TODO
-function fillSquare() {
+/**
+ * Fills the current square with a color based on the current mode. Possible
+ * modes are black, greyscale (black is added), and rainbow (random color).
+ *
+ * @param {Event} e - The event that occured.
+ */
+function fillSquare(e) {
+    let color;
 
+    switch (mode) {
+        // Black
+        case modeTypes[0]:
+            color = 'rgb(0, 0, 0)';
+            break;
+        // Greyscale
+        case modeTypes[1]:
+            // Extract current RGB colors
+            let currentColor = getComputedStyle(e.target).backgroundColor;
+            currentColor = currentColor.match(/([0-9]+)+/g);
+
+            let dimColor = getDimmedColor(currentColor);
+
+            color = `rgb(${dimColor[0]}, ${dimColor[1]}, ${dimColor[2]})`;
+            break;
+        // Rainbow
+        case modeTypes[2]:
+            let ranColors = [
+                Math.floor(Math.random() * 256),
+                Math.floor(Math.random() * 256),
+                Math.floor(Math.random() * 256)
+            ];
+
+            color = `rgb(${ranColors[0]}, ${ranColors[1]}, ${ranColors[2]})`;
+            break;
+    }
+
+    e.target.style.backgroundColor = color;
 }
 
-// TODO
-function changeMode() {
+/**
+ * A helper function for fillSquare(). Takes the given color and adds 10% more
+ * black to it, giving it a "dimmed" effect.
+ *
+ * @param {number[]} color - The RGB values in the form [red, green, blue].
+ * @return {number[]} The given values after applying the dimmed effect.
+ */
+function getDimmedColor(color) {
+    // Amount of black to add each time
+    const dimAmount = Math.floor(255 / 10 + 1);
 
+    let dimColor = [
+        color[0] - dimAmount,
+        color[1] - dimAmount,
+        color[2] - dimAmount
+    ];
+
+    // Keep colors positive
+    dimColor.forEach((val) => {
+        if (val < 0) {
+            val = 0;
+        }
+    });
+
+    return dimColor;
+}
+
+/**
+ * Changes the fill mode according to the button pressed.
+ *
+ * @param {Event} e - The event that occured.
+ */
+function changeMode(e) {
+    mode = e.target.textContent;
 }
 
 // TODO

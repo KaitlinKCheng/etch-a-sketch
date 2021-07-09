@@ -1,0 +1,93 @@
+:root {
+    --bg-color: #fddcd6;
+    /* --accent-color: #fb5c3f; */
+    --accent-color: #d64d31;
+}
+
+body {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#title {
+    width: 500px;
+    margin: 20px auto;
+    font-size: 3rem;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    color: #fff;
+    text-shadow: #333 2px 2px;
+    background-color: var(--accent-color);
+    border-radius: 12px;
+}
+
+footer {
+    width: 160px;
+    margin: 20px auto;
+    font-style: italic;
+    text-decoration: var(--accent-color) underline;
+}
+
+
+/* Containers */
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.col-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#main-container {
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 60px;
+    background-color: var(--bg-color);
+    border: var(--accent-color) solid 15px;
+    border-radius: 10px;
+}
+
+
+/* Buttons */
+
+#btns {
+    justify-content: space-around;
+    height: 350px;
+    margin: 0 60px;
+}
+
+.btn {
+    width: 150px;
+    margin: 5px 0;
+    padding: 5px;
+    color: #000;
+    border: var(--accent-color) dotted 3px;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    border: var(--accent-color) solid 3px;
+}
+
+.selected-mode {
+    color: #fff;
+    background-color: var(--accent-color);
+}
+
+
+/* Grid */
+
+#grid {
+    display: grid;
+    outline: #000 solid 5px;
+    margin: 0 60px;
+}
+
+.square {
+    background-color: #fff;
+    outline: #222 solid 1px;
+}

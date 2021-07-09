@@ -64,18 +64,20 @@ footer {
     margin: 5px 0;
     padding: 5px;
     color: #000;
+    text-decoration: none;
     background-color: #fff;
-    border: var(--accent-color) dotted 3px;
+    border: var(--accent-color) solid 3px;
     border-radius: 10px;
 }
 
+.selected-mode,
 .btn:hover {
-    border: var(--accent-color) solid 3px;
+    color: #fff;
+    background-color: var(--accent-color);
 }
 
 .selected-mode {
-    color: #fff;
-    background-color: var(--accent-color);
+    text-decoration: #fff underline;
 }
 
 

@@ -168,6 +168,11 @@ function changeSize() {
 
     while (newSize < minSize || newSize > maxSize) {
         newSize = prompt(`Enter a new size (${minSize}–${maxSize}):`, 0);
+
+        // Stop if user cancels
+        if (!newSize) {
+            return;
+        }
     }
 
     clear();

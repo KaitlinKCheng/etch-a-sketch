@@ -68,7 +68,7 @@ function createGrid(squares) {
  * Fills the current square with a color based on the current mode. Possible
  * modes are black, greyscale (black is added), and rainbow (random color).
  *
- * @param {Event} e - The event that occured.
+ * @param {Event} e - The event that occurred.
  */
 function fillSquare(e) {
     let color;
@@ -134,7 +134,7 @@ function getDimmedColor(color) {
  * Changes the fill mode according to the button pressed. Updates the selected
  * button's class.
  *
- * @param {Event} e - The event that occured.
+ * @param {Event} e - The event that occurred.
  */
 function changeMode(e) {
     mode = e.target.textContent;
